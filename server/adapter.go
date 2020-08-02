@@ -22,11 +22,12 @@ import (
 
 	pb "github.com/casbin/casbin-server/proto"
 	"github.com/casbin/casbin/v2/persist"
-	"github.com/casbin/casbin/v2/persist/file-adapter"
-	"github.com/casbin/gorm-adapter/v2"
+	fileadapter "github.com/casbin/casbin/v2/persist/file-adapter"
+	gormadapter "github.com/casbin/gorm-adapter/v2"
+
 	//_ "github.com/jinzhu/gorm/dialects/mssql"
 	//_ "github.com/jinzhu/gorm/dialects/mysql"
-	//_ "github.com/jinzhu/gorm/dialects/postgres"
+	_ "github.com/jinzhu/gorm/dialects/postgres"
 )
 
 var errDriverName = errors.New("currently supported DriverName: file | mysql | postgres | mssql")
@@ -85,7 +86,7 @@ func LoadConfiguration(file string) Config {
 }
 
 type Config struct {
-	Driver string
+	Driver     string
 	Connection string
-	Enforcer string
+	Enforcer   string
 }

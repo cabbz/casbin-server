@@ -144,12 +144,12 @@ func TestRoleAPI(t *testing.T) {
 	testEnforce(t, e, "bob", "data2", "write", true)
 
 	testGetPermissions(t, e, "alice", [][]string{{"alice", "data1", "read"}}) //Added these in this class as it's part of RBAC.
-	testGetPermissions(t, e, "bob", [][]string{{"bob","data2", "write"}})
+	testGetPermissions(t, e, "bob", [][]string{{"bob", "data2", "write"}})
 	testGetPermissions(t, e, "george", [][]string{})
 	testGetPermissions(t, e, "data3_admin", [][]string{{"data3_admin", "data3", "admin"}})
 
-	testGetImplicitPermissions(t, e, "bob", [][]string{{"bob","data2", "write"}})
-	testGetImplicitPermissions(t, e, "data3_admin", [][]string{{"data3_admin", "data3", "admin"},{"data4_admin", "data4", "read"}})
+	testGetImplicitPermissions(t, e, "bob", [][]string{{"bob", "data2", "write"}})
+	testGetImplicitPermissions(t, e, "data3_admin", [][]string{{"data3_admin", "data3", "admin"}, {"data4_admin", "data4", "read"}})
 }
 
 func testGetPermissions(t *testing.T, e *testEngine, name string, res [][]string) {
